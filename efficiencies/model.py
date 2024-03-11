@@ -16,7 +16,11 @@ class Attention(nn.Module):
 class MuonClassifier(nn.Module):
     def __init__(self, input_dim):
         super().__init__()
+<<<<<<< HEAD
         self.attention = Attention(input_dim, 512)
+=======
+        # self.attention = Attention(input_dim, 512)
+>>>>>>> 98a1361 (commit for efficiency scale)
         self.fc1 = nn.Linear(input_dim, 512)
         self.fc2 = nn.Linear(512, 128)
         self.fc3 = nn.Linear(128, 32)
@@ -96,6 +100,7 @@ def train(
 
     scheduler.step(avg_loss)
     # scheduler.step()
+<<<<<<< HEAD
 
     print(f"Train | Loss = {avg_loss:.4f} |")
 
@@ -111,5 +116,24 @@ def train(
 
     print(f"Test  | Loss = {avg_test_loss:.4f} |")
     print("--------------------------------------")
+=======
+    avg_test_loss = 0
+    
+    print(f"Train | Loss = {avg_loss:.4f} |")
+    if (test_dataloader is not None):
+
+        model.eval()
+        test_loss = 0
+        with torch.no_grad():
+            for X, y in test_dataloader:
+                X, y = X.to(device), y.to(device)
+                pred = model(X)
+                test_loss += loss_fn(pred, y).item()
+
+        avg_test_loss = test_loss / len(test_dataloader)
+
+        print(f"Test  | Loss = {avg_test_loss:.4f} |")
+        print("--------------------------------------")
+>>>>>>> 98a1361 (commit for efficiency scale)
 
     return (avg_loss, avg_test_loss)

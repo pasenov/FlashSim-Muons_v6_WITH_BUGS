@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 sum_pred: 520611.6875
+=======
+sum_pred: 399736.125
+>>>>>>> 98a1361 (commit for efficiency scale)
 sum_true: 388322.0

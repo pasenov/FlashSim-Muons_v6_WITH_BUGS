@@ -3,3 +3,7 @@
 *.pt
 *.root
 *.hdf5
+<<<<<<< HEAD
+=======
+*.npy
+>>>>>>> 98a1361 (commit for efficiency scale)
